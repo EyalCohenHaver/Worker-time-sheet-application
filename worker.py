@@ -1,5 +1,7 @@
 import openpyxl
 from datetime import date, datetime, timedelta
+from time import sleep
+
 
 class Worker:
     def __init__(self, first_name, last_name, workerID, paygrade):
@@ -33,3 +35,14 @@ class Worker:
         sheet.append(self.line_data)
         workbook.save(self.time_sheet_filename)
         self.line_data = []
+
+def main():
+    john = Worker("John", "Walevsky", "123", 40)
+    john.clockIn()
+    sleep(120)
+    john.clockOut()
+    john.submitLine()
+
+
+if __name__ == "__main__":
+    main()
